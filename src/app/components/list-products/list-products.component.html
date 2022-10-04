@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-lg-6">
+      <h2>Listado de Products</h2>
+    </div>
+    <div class="col-lg-6" style="text-align: right">
+      <button mat-raised-button color="primary" routerLink="/admin/product/new">New</button>
+    </div>
+  </div>
+  <mat-form-field appearance="standard">
+    <mat-label>Filter</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Filter by all fields"
+      #input
+    />
+  </mat-form-field>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>Id</th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>Description</th>
+      <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+    </ng-container>
+    <ng-container matColumnDef="urlToImage">
+      <th mat-header-cell *matHeaderCellDef>Price</th>
+      <td mat-cell *matCellDef="let element">{{ element.price }}</td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Acciones</th>
+      <td mat-cell *matCellDef="let element">
+        <a
+          class="pointer"
+          routerLink="/admin/product/edit/{{ element.id }}"
+          style="color: primary"
+        >
+          <mat-icon>edit</mat-icon>
+        </a>
+        <a
+          (click)="deleteProduct(element.id)"
+          class="pointer"
+          style="color: #e15639"
+        >
+          <mat-icon>delete</mat-icon>
+        </a>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    aria-label="Select page of periodic elements"
+  >
+  </mat-paginator>
+  

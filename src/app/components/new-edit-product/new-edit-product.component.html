@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-lg-6">
+    <h2>{{ product.id ? "Edit Product" : "New Product" }}</h2>
+  </div>
+  <mat-form-field appearance="fill">
+    <mat-label>Description</mat-label>
+    <input matInput [(ngModel)]="product.description" required />
+  </mat-form-field>
+  <br />
+  <mat-form-field appearance="fill">
+    <mat-label>Price</mat-label>
+    <input type="number" matInput [(ngModel)]="product.price" required="" />
+  </mat-form-field>
+  <br />
+  <button mat-raised-button color="primary" (click)="saveProduct()">
+    {{ product.id ? "Update" : "New" }}
+  </button>
+  <button mat-raised-button color="primary" routerLink="/business/products">
+    Cancel
+  </button>
+</div>
