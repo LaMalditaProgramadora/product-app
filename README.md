@@ -1,8 +1,7 @@
 # Proyecto: product-app
 
 ## Explicación
-YouTube: https://youtu.be/KUsWixVtOZ8
-
+YouTube: https://youtu.be/tjHUOZ9qrXc
 ## Features
 
 * CRUD de productos.
